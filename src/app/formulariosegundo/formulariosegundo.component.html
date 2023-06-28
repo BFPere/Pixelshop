@@ -1,0 +1,26 @@
+<section id="forms">
+    <!-- <header>
+      <h1>Form elements</h1></header> -->
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario)" novalidate>
+      <fieldset id="forms__input">
+        <legend>Registro</legend>
+        <p><br><label for="nombre" class="form-label">Nombre:</label> </p>
+        <input formControlName="nombre" class="form-control"> 
+        
+        <p><br><label for="apellidos" class="form-label">Apellidos:</label> </p>
+        <input formControlName="apellidos" class="form-control"> 
+       
+        <p><br><label for="email" class="form-label">e-mail:</label></p>
+        <input formControlName="email" class="form-control">
+        <p><br></p>
+        
+        <span >Todos los campos son requeridos</span>
+        
+        <!-- <span *ngIf="formulario.get('nombre')?.hasError('required')">Todos los campos son requeridos</span> -->
+        <!-- {{formulario.controls.user.errors | json}} -->
+   
+         <p><button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Enviar</button></p>
+      </fieldset>
+    </form>
+</section>
+   

@@ -1,0 +1,30 @@
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Formación Front-End</h1>
+        <p class="lead">Los mejores cursos Front-End</p>
+        <!-- <app-formulariosegundo></app-formulariosegundo> -->
+
+<!--
+- shopModel és el model, shopItems són les dades que hi ha en el model.
+- la classe card-deck no està a bootstrap 5... l'he posat a styles.css de bootstrap 4
+- bucle per mostrar els cursos
+-->
+        <div class="card-deck"> 
+            <div class="card" *ngFor="let curso of shopModel.shopItems">
+                <app-stateless [product]="curso" (cursomatriculado)="cursoMatriculado($event)"></app-stateless>
+            </div>
+        </div>
+    </div>
+
+    <ul class="list-group"> <!--Mostra la llista de la compra: array que es crea en cada click-->
+        <li class="list-group-item disabled">Información matrícula</li>
+        <li *ngFor="let boughtItem of boughtItems" class="list-group-item">{{boughtItem.title}} 
+            <span class="btn btn-primary">{{boughtItem.price}}€</span></li>
+        <li class="list-group-item disabled"><h2>Total: {{finalPrice()}}€</h2></li>
+    </ul>
+    <app-confirm></app-confirm>
+    <app-status-cart>
+        [price]="finalPrice()"
+        [shopModel]="shopModel.shopItems" (add)="onConfirm()"
+    </app-status-cart>
+</main>
